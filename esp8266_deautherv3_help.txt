@@ -1,0 +1,141 @@
+Version 3.0.0 dev
+
+[ ================== DISCLAIMER ================== ]
+  This is a tool.
+  It's neither good nor bad.
+  Use it to study and test.
+  Never use it to create harm or damage!
+
+  The continuation of this project counts on you!
+[ ================================================ ]
+
+Type "help" to see all commands.
+Type "start" to go through the functionalities step by step.
+
+# help
+
+welcome
+  Print welcome screen including version and disclaimer
+
+help [-cmd,command <value>] [-s/hort]
+  Print the list of commands that you see right now
+
+start [-cmd <value>]
+  Start a guided tour through the functions of this device
+
+scan [-m/ode <ap+st>] [-t/ime <20s>] [-ch/annel <all>] [-ct/ime <284>] [-r/etain]
+  Scan for WiFi devices
+  -m:  scan mode [ap,st,ap+st] (default=ap+st)
+  -t:  station scan time (default=20s)
+  -ch: 2.4 GHz channels for station scan [1-14] (default=all)
+  -ct: channel scan time in milliseconds (default=284)
+  -r:  keep previous scan results
+
+auth [-bssid <value>] [-ap <value>] [-t/ime <0>] [-ch/annel <all>] [-ct/ime <284>] [-save]
+  Authentication scan
+  -bssid: filter by BSSID(s)
+  -ap:    filter by access point ID(s)
+  -ch:    2.4 GHz channels for auth. scan [1-14] (default=all)
+  -ct:    channel scan time in milliseconds (default=284)
+  -t:     scan timeout (default=none)
+  -save:  save recorded probe requests
+
+rssi [-mac <value>] [-ap <value>] [-st/ation <value>] [-ch/annel <all>] [-ct/ime <120>] [-ut,u/pdate/time <1s>]
+  Signal Strength scan
+  -mac: filter by MAC(s)
+  -ap:  filter by AP(s)
+  -st:  filter by Station(s)
+  -ch:  2.4 GHz channel(s) for scan [1-14] (default=all)
+  -ct:  channel scan time in milliseconds (default=120)
+  -ut:  update time (default=1s)
+
+results [-t/ype <ap+st>] [-ch/annel/s <all>] [-ssid/s <value>] [-bssid/s <value>] [-vendor/s <value>]
+  Print list of scan results [access points (networks) and stations (clients)]
+  -type:   type of results [ap,st,ap+st] (default=ap+st)
+  -ch:     filter by channel(s)
+  -ssid:   filter by SSID(s)
+  -bssid:  filter by BSSID(s)
+  -vendor: filter by vendor name(s)
+
+beacon -ssid/s <value> [-bssid,from <random>] [-receiver,to <broadcast>] [-enc/ryption <open>] [-ch/annel <1>] [-r/ate <10>] [-auth,m/on/itor] [-save] [-t/ime/out <5min>]
+  Send WiFi network advertisement beacons
+  -ssid: network names (SSIDs) for example: "test A","test B"
+  -from: BSSID or sender MAC address (default=random)
+  -to:   receiver MAC address (default=broadcast)
+  -enc:  encryption [open,wpa2] (default=open)
+  -ch:   2.4 GHz channel(s) [1-14] (default=1)
+  -r:    packets per second per SSID (default=10)
+  -m:    scan for authentications
+  -save: save probe requests from auth. scan
+  -t:    attack timeout (default=5min)
+
+deauth [-ap <value>] [-st/ation <value>] [-mac,manual <value>] [-t/ime/out <5min>] [-n/um/ber <0>] [-r/ate <20>] [-m/ode <deauth+disassoc>]
+  Deauthenticate (disconnect) selected WiFi connections
+  -ap:  access point IDs to attack
+  -st:  station IDs to attack
+  -mac: manual target selection [Sender-Receiver-Channel] for example:'aa:bb:cc:dd:ee:ff-00:11:22:33:44:55-7'
+  -t:   attack timeout (default=5min)
+  -n:   packet limit [>1] (default=0)
+  -r:   packets per second (default=20)
+  -m:   packet types [deauth,disassoc,deauth+disassoc] (default=deauth+disassoc)
+
+probe -ssid/s <value> [-sender,from <random>] [-receiver,to <broadcast>] [-ch/annel/s <1>] [-r/ate <10>] [-t/ime/out <5min>]
+  Send probe requests for WiFi networks
+  -ssid: network names (SSIDs) for example: "test A","test B"
+  -from: sender MAC address (default=random)
+  -to:   receiver MAC address (default=broadcast)
+  -ch:   2.4 GHz channel(s) [1-14] (default=1)
+  -r:    packets per second per SSID (default=10)
+  -t:    attack timeout (default=5min)
+
+alias [-m/ode <list>] [-name <value>] [-mac <value>] [-ap <value>] [-st <value>]
+  Manage alias for MAC address
+  -mode: list,add,remove or clear (default=list)
+  -name: alias name
+  -mac:  MAC address
+  -ap:   access point ID
+  -st:   station ID
+
+clear
+  Clear serial output (by spamming line breaks :P)
+
+ram
+  Print memory usage
+
+stop [-mode <all>]
+  Stop scans or attacks
+  -mode: all,scan,auth,rssi,attack,beacon,deauth,probe,ap (default=all)
+
+history
+  Print previous 10 commands
+
+restart,reboot
+  Restarts/Reboots the ESP8266
+
+chicken
+  Needs more chicken!
+
+vendor -mac <value> [-e/xact]
+  Vendor (manufacturer) lookup
+  -mac: MAC address(es)
+  -e:   list only exact matchess
+
+wait
+  Wait until scan or attack has finished
+
+sleep [-t/ime <value>]
+  Sleep for specified amount of time
+  -t: time to sleep
+
+ap -s/sid <value> [-p/assword <value>] [-hidden] [-ch/annel <1>] [-b/ssid <random>]
+  Start access point
+  -s:  SSID network name
+  -p:  Password with at least 8 characters
+  -h:  Hidden network
+  -ch: Channel (default=1)
+  -b:  BSSID MAC address (default=random)
+
+demo [-m/ode <on>]
+  Demo mode
+  on:  turn on demo mode
+  off: turn off demo mode
